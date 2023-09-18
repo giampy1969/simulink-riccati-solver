@@ -1,0 +1,24 @@
+<productinfo>
+
+<matlabrelease>12.1</matlabrelease>
+<name>LqrSim</name>
+<type>blockset</type>
+<icon>$toolbox/simulink/simulink/simulinkicon.gif</icon>
+
+<list>
+
+<listitem>
+<label>Help</label>
+<callback>doc lqrsim/</callback>
+<icon>$toolbox/matlab/icons/book_sim.gif</icon>
+</listitem>
+
+<listitem>
+<label>Main Example</label>
+<callback>sfcndemo_lqry</callback>
+<icon>$toolbox/matlab/icons/demoicon.gif</icon>
+</listitem>
+
+</list>
+
+</productinfo>

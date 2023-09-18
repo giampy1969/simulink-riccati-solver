@@ -1,0 +1,45 @@
+      SUBROUTINE TRNATB(N1,N2,N,M,A,B)
+      DOUBLE PRECISION   A(N1,M)
+      DOUBLE PRECISION   B(N2,N)
+      DOUBLE PRECISION   TEMP
+C
+C  DESCRIPTION:
+C
+C  FORM MATRIX TRANSPOSE B = A-TRANSPOSE
+C
+C  ON INPUT:
+C  A IS N X M IN N1 X M ARRAY
+C
+C  ON OUTPUT:
+C  B IS M X N IN N2 X N ARRAY
+C  B AND A MAY BE THE SAME;IF SO, N1 MUST = N2.
+C
+C  WRITTEN BY:  J. DOUGLAS BIRDWELL
+C               DEPT. OF ELEC. ENGR.
+C               FERRIS 311
+C               UNIVERSITY OF TENNESSEE
+C               KNOXVILLE, TN  37996-2100
+C               (615) 974-5468
+C
+C  REVISED BY:  DENNIS A. REED
+C               JUNE 22,1980
+C               bb:8/18/86
+C 
+       NN=MIN0(M,N)
+      DO 1000 I = 1, NN
+         DO 1000 J = 1, I
+            TEMP = A(J,I)
+            B(J,I) = A(I,J)
+1000        B(I,J) = TEMP
+      IF(M-N)1050,2000,1200
+1050  MP1=M+1
+      DO 1100 I=1,M
+         DO 1100 J=MP1,N
+1100        B(I,J)=A(J,I)
+      GO TO 2000
+1200  NP1=N+1
+      DO 1300 I=NP1,M
+         DO 1300 J=1,N
+1300        B(I,J)=A(J,I)
+2000  RETURN
+      END

@@ -1,0 +1,32 @@
+      SUBROUTINE XTY (N1,N2,N3,M,L,N,X,Y,Z)
+      DOUBLE PRECISION   X(N1,L)
+      DOUBLE PRECISION   Y(N2,N)
+      DOUBLE PRECISION   Z(N3,N)
+      DOUBLE PRECISION   TEMP
+C
+C  DESCRIPTION:
+C
+C  FORM MATRIX PRODUCT Z = X-TRANSPOSE * Y
+C
+C  ON INPUT:
+C  X IS M X L MATRIX IN N1 X L ARRAY
+C  Y IS M X N MATRIX IN N2 X N ARRAY
+C
+C  ON OUTPUT:
+C  Z IS L X N MATRIX IN N3 X N ARRAY
+C
+C  WRITTEN BY:  J. DOUGLAS BIRDWELL
+C               DEPT. OF ELEC. ENGR.
+C               FERRIS 311
+C               UNIVERSITY OF TENNESSEE
+C               KNOXVILLE, TN  37996-2100
+C               (615) 974-5468
+C
+      DO 1000 J = 1, N
+         DO 1000 I = 1, L
+            TEMP = 0.D0
+            DO 500 K = 1, M
+500            TEMP = TEMP + X(K,I) * Y(K,J)
+1000        Z(I,J) = TEMP
+      RETURN
+      END

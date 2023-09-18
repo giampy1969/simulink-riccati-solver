@@ -1,0 +1,67 @@
+      DOUBLE PRECISION FUNCTION D1NRM(NR,N,M,A)
+C
+C     *****PARAMETERS:
+      INTEGER NR,N,M
+      DOUBLE PRECISION A(NR,M)
+C
+C     *****LOCAL VARIABLES:
+      INTEGER I,J
+      DOUBLE PRECISION TEMP
+C
+C     *****FORTRAN FUNCTIONS:
+      DOUBLE PRECISION DABS, DMAX1
+C
+C     *****SUBROUTINES CALLED:
+C     NONE
+C
+C     -----------------------------------------------------------------
+C
+C     *****PURPOSE:
+C     GIVEN AN N BY M MATRIX A, THIS FUNCTION COMPUTES ITS 1-NORM.
+C
+C     *****PARAMETER DESCRIPTION:
+C
+C     ON INPUT:
+C
+C       NR      INTEGER
+C               ROW DIMENSION OF THE ARRAY CONTAINING THE MATRIX A AS
+C               DECLARED IN THE MAIN CALLING PROGRAM DIMENSION
+C               STATEMENT;
+C
+C       N       INTEGER
+C               NUMBER OF ROWS OF THE MATRIX A;
+C
+C       M       INTEGER
+C               NUMBER OF COLUMNS OF THE MATRIX A;
+C
+C       A       REAL(NR,M)
+C               MATRIX WHOSE 1-NORM IS TO BE COMPUTED.
+C
+C     ON OUTPUT:
+C
+C       D1NRM   REAL
+C               CONTAINS THE 1-NORM OF THE MATRIX A.
+C
+C     *****ALGORITHM NOTES:
+C     NONE.
+C
+C     *****HISTORY:
+C     THIS SUBROUTINE WAS WRITTEN BY W.F. ARNOLD, NAVAL WEAPONS CENTER,
+C     CODE 35104, CHINA LAKE, CA  93555, AS PART OF THE SOFTWARE PACKAGE
+C     RICPACK, SEPTEMBER 1983.
+C
+C     ------------------------------------------------------------------
+C
+      D1NRM = 0.0D0
+      DO 20 I=1,M
+          TEMP = 0.0D0
+          DO 10 J=1,N
+              TEMP = TEMP + DABS(A(J,I))
+   10     CONTINUE
+          D1NRM = DMAX1(D1NRM,TEMP)
+   20 CONTINUE
+      RETURN
+C
+C     LAST LINE OF D1NRM
+C
+      END
